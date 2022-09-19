@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useHeaderHeight } from "@react-navigation/elements";
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
-import Bottom from "./screens/HomeScreen";
+import TranningA from "./screens/Tab/subDivisao/TranningA";
 import PagInicial from "./screens/PagInicial";
 import ForgetPassword from "./screens/ForgetPassword";
 import Execicios from "./screens/Tab/Execicios";
@@ -44,6 +44,11 @@ export default function App() {
           options={{ headerShown: false, gestureEnabled: false }}
           name="Home"
           component={HomeScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="TranningA"
+          component={TranningA}
         />
       </Stack.Navigator>
     </NavigationContainer>

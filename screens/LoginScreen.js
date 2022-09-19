@@ -19,8 +19,8 @@ import {
 } from "firebase/auth";
 
 const LoginScreen = ({}) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("dmarcio998@gmail.com");
+  const [password, setPassword] = useState("marcio1234");
 
   const navigation = useNavigation();
 
@@ -41,7 +41,6 @@ const LoginScreen = ({}) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        alert("Bem Vindo");
         navigation.replace("Home");
       }
     });

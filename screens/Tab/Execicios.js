@@ -12,9 +12,7 @@ import React from "react";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 
-const Seach = () => {
-  const navigation = useNavigation();
-
+const Seach = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -54,7 +52,10 @@ const Seach = () => {
               >
                 Treino A
               </Text>
-              <TouchableOpacity style={styles.btn12}>
+              <TouchableOpacity
+                style={styles.btn12}
+                onPress={() => navigation.navigate("TranningA")}
+              >
                 <Text
                   style={{
                     color: "white",
