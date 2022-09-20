@@ -10,6 +10,8 @@ import {
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../../../src/Component/Header";
+import { Pressable } from "react-native-web";
+import { TextInput } from "react-native-gesture-handler";
 
 const TranningA = () => {
   const navigation = useNavigation();
@@ -22,12 +24,16 @@ const TranningA = () => {
           style={{ width: "100%", flex: 1 }}
           resizeMode="cover"
         >
-          <Ionicons
-            name="chevron-back-circle-outline"
-            size={24}
-            color="white"
-          />
+          
+          
+    <TextInput
+    placeholder="Pesquisar"
+    placeholderTextColor={"#000000"}
+    style={styles.inpute}
+    />
+          
         </ImageBackground>
+    
       </View>
     </SafeAreaView>
   );
@@ -43,4 +49,9 @@ const styles = StyleSheet.create({
 
     height: 280,
   },
+  inpute:{
+    borderWidth:1,
+    back
+
+  }
 });
