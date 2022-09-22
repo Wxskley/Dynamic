@@ -46,7 +46,7 @@ export default function App() {
           component={HomeScreen}
         />
         <Stack.Screen
-          options={{title:"Treino A"}}
+          options={{ headerShown: false }}
           name="TranningA"
           component={TranningA}
         />

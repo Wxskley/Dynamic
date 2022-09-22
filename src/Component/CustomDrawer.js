@@ -6,6 +6,9 @@ import React, { Component } from "react";
 import { Text, StyleSheet, View, ImageBackground, Image } from "react-native";
 
 function CustomDrawer({ ...props }) {
+  function signOut() {
+    auth().signOut();
+  }
   return (
     <View style={styles.container}>
       <View style={styles.drawerImg}>
