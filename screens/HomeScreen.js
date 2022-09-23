@@ -9,6 +9,7 @@ import {
   Image,
   ImageBackground,
   KeyboardAvoidingView,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -44,7 +45,7 @@ function Draw() {
         headerShown: false,
         headerTintColor: "#000000",
         tabBarActiveTintColor: "white",
-        ActiveTintColor: "white",
+        tabBarInactiveTintColor: "white",
         tabBarStyle: {
           paddingBottom: 5,
           borderTopColor: "transparent",
@@ -70,7 +71,7 @@ function Draw() {
       />
 
       <Tab.Screen
-        name="Seach"
+        name="Montar Treino"
         component={Seach}
         options={{
           tabBarActiveBackgroundColor: "white",
@@ -78,7 +79,7 @@ function Draw() {
           paddingBottom: 10,
           tabBarActiveTintColor: "black",
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="search-sharp" size={size} color={color} />
+            <Ionicons name="create" size={size} color={color} />
           ),
         }}
       />
@@ -160,8 +161,9 @@ export default function HomeScreen() {
         }}
         component={Pefil}
       />
+
       <Drawer.Screen
-        name="Ajuda"
+        name="Sobre"
         options={{
           headerStyle: {
             backgroundColor: "#000000",

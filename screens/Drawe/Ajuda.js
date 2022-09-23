@@ -1,47 +1,47 @@
-import Animated, {
-  useSharedValue,
-  withTiming,
-  useAnimatedStyle,
-  Easing,
-} from "react-native-reanimated";
-import { View, Button } from "react-native";
-import React from "react";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  TextInput,
+  StyleSheet,
+  TextInputComponent,
+  Alert,
+} from "react-native";
+import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+import * as MailComposer from "expo-mail-composer";
 
-export default function AnimatedStyleUpdateExample(props) {
-  const randomWidth = useSharedValue(10);
+export default function Ajuda() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-  const config = {
-    duration: 500,
-    easing: Easing.bezier(0.5, 0.01, 0, 1),
-  };
-
-  const style = useAnimatedStyle(() => {
-    return {
-      width: withTiming(randomWidth.value, config),
-    };
-  });
-
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      <Animated.View
-        style={[
-          { width: 100, height: 80, backgroundColor: "black", margin: 30 },
-          style,
-        ]}
-      />
-      <Button
-        title="toggle"
-        onPress={() => {
-          randomWidth.value = Math.random() * 350;
-        }}
-      />
-    </View>
-  );
+  return <View style={styles.container}></View>;
 }
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: 35,
+    flex: 1,
+  },
+  input: {
+    width: "80%",
+    borderBottomWidth: 1,
+    borderBottomColor: "#000000",
+    padding: 10,
+    backgroundColor: "#fff",
+    margin: 10,
+  },
+  button: {
+    width: "40%",
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#000000",
+    borderRadius: 10,
+    fontWeight: "bold",
+    margin: 10,
+  },
+});
