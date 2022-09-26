@@ -7,6 +7,8 @@ import { useHeaderHeight } from "@react-navigation/elements";
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import TranningA from "./screens/Tab/subDivisao/TranningA";
+import TranningB from "./screens/Tab/subDivisao/TranningB";
+import TranningC from "./screens/Tab/subDivisao/TranningC";
 import PagInicial from "./screens/PagInicial";
 import ForgetPassword from "./screens/ForgetPassword";
 import Execicios from "./screens/Tab/Execicios";
@@ -49,6 +51,16 @@ export default function App() {
           options={{ headerShown: false }}
           name="TranningA"
           component={TranningA}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="TranningB"
+          component={TranningB}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="TranningC"
+          component={TranningC}
         />
       </Stack.Navigator>
     </NavigationContainer>

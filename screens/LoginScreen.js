@@ -12,7 +12,7 @@ import {
   ScrollView,
 } from "react-native";
 import { auth } from "../firebase";
-
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -100,6 +100,7 @@ const LoginScreen = ({}) => {
             >
               LOG IN
             </Text>
+            <MaterialIcons name="login" size={24} color="white" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn12} onPress={handleSignUp}>
             <Text
@@ -112,6 +113,7 @@ const LoginScreen = ({}) => {
             >
               CREATE ACCOUNT
             </Text>
+            <Ionicons name="create" size={24} color="white" />
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -141,6 +143,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     shadowColor: "#000000",
+    flexDirection: "row",
   },
   //inputs pagina login
   background: {

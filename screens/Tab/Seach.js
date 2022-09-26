@@ -85,7 +85,10 @@ const Seach = ({ navigation }) => {
               >
                 Treino B
               </Text>
-              <TouchableOpacity style={styles.btn12}>
+              <TouchableOpacity
+                style={styles.btn12}
+                onPress={() => navigation.navigate("TranningB")}
+              >
                 <Text
                   style={{
                     color: "white",
@@ -115,7 +118,10 @@ const Seach = ({ navigation }) => {
               >
                 Treino C
               </Text>
-              <TouchableOpacity style={styles.btn12}>
+              <TouchableOpacity
+                style={styles.btn12}
+                onPress={() => navigation.navigate("TranningC")}
+              >
                 <Text
                   style={{
                     color: "white",

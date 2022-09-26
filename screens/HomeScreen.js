@@ -97,7 +97,7 @@ function Draw() {
         }}
       />
       <Tab.Screen
-        name="SingOut"
+        name="Calculadoras"
         component={Execicioss}
         options={{
           tabBarActiveBackgroundColor: "white",
@@ -105,7 +105,7 @@ function Draw() {
           paddingBottom: 10,
           tabBarActiveTintColor: "black",
           tabBarIcon: ({ size, color }) => (
-            <Entypo name="log-out" size={size} color={color} />
+            <Entypo name="calculator" size={size} color={color} />
           ),
         }}
       />
