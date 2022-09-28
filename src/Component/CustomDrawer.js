@@ -44,8 +44,8 @@ function CustomDrawer({ ...props }) {
       </View>
 
       <DrawerItemList {...props} />
-      <DrawerItem label="Ajuda" onPress={sendEmail} style={{}} />
-      <DrawerItem label="Sair" onPress={handleSignOut} style={{}} />
+      <DrawerItem label="Ajuda" onPress={sendEmail} labelStyle={styles.label} />
+      <DrawerItem label="Sair" onPress={handleSignOut} labelStyle={styles.label} />
     </View>
   );
 }
@@ -54,5 +54,9 @@ export default CustomDrawer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  label:{
+    color:"#000000",
+    
   },
 });
