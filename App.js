@@ -9,6 +9,7 @@ import HomeScreen from "./screens/HomeScreen";
 import TranningA from "./screens/Tab/subDivisao/TranningA";
 import TranningB from "./screens/Tab/subDivisao/TranningB";
 import TranningC from "./screens/Tab/subDivisao/TranningC";
+import ManterPeso from "./screens/Tab/subCalc/ManterPeso";
 import PagInicial from "./screens/PagInicial";
 import ForgetPassword from "./screens/ForgetPassword";
 import Execicios from "./screens/Tab/Execicios";
@@ -61,6 +62,16 @@ export default function App() {
           options={{ headerShown: false }}
           name="TranningC"
           component={TranningC}
+        />
+        <Stack.Screen
+          options={{
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerTintColor: "white",
+          }}
+          name="ManterPeso"
+          component={ManterPeso}
         />
       </Stack.Navigator>
     </NavigationContainer>

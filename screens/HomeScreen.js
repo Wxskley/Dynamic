@@ -20,7 +20,7 @@ import { auth } from "../firebase";
 
 //tabNavigation
 import Execicios from "./Tab/Execicios";
-import Execicioss from "./Tab/Execicioss";
+import calculadora from "./Tab/calculadora";
 import Seach from "./Tab/Seach";
 import Cronometro from "./Tab/Cronometro";
 import Pefil from "./Drawe/Pefil";
@@ -98,7 +98,7 @@ function Draw() {
       />
       <Tab.Screen
         name="Calculadoras"
-        component={Execicioss}
+        component={calculadora}
         options={{
           tabBarActiveBackgroundColor: "white",
           paddingTop: 5,
