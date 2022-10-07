@@ -10,6 +10,7 @@ import {
   ImageBackground,
   Platform,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import { auth } from "../firebase";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
@@ -17,17 +18,22 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { set } from "react-native-reanimated";
 
 const LoginScreen = ({}) => {
   const [email, setEmail] = useState("dmarcio998@gmail.com");
   const [password, setPassword] = useState("marcio1234");
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
   async function handleSignUp() {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((value) => {
-        console.log("Cadastrado com Sucesso!\n + value.user.uid");
+        return (
+          setLoading(true),
+          console.log("Cadastrado com Sucesso!\n + value.user.uid")
+        );
       })
       .catch((error) => console.log(error));
   }
@@ -41,7 +47,7 @@ const LoginScreen = ({}) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigation.replace("Home");
+        return setLoading(true), navigation.replace("Home");
       }
     });
 
@@ -90,30 +96,38 @@ const LoginScreen = ({}) => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn12} onPress={handleLogin}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: 20,
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              LOG IN
-            </Text>
-            <MaterialIcons name="login" size={24} color="white" />
+            {!loading ? (
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                LOG IN
+                <MaterialIcons name="login" size={24} color="white" />
+              </Text>
+            ) : (
+              <ActivityIndicator size={20} color={"white"} />
+            )}
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn12} onPress={handleSignUp}>
-            <Text
-              style={{
-                color: "white",
-                textAlign: "center",
-                fontSize: 20,
-                fontWeight: "bold",
-              }}
-            >
-              CREATE ACCOUNT
-            </Text>
-            <Ionicons name="create" size={24} color="white" />
+            {!loading ? (
+              <Text
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                }}
+              >
+                CREATE ACCOUNT
+                <Ionicons name="create" size={24} color="white" />
+              </Text>
+            ) : (
+              <ActivityIndicator size={20} color={"white"} />
+            )}
           </TouchableOpacity>
         </View>
       </ImageBackground>

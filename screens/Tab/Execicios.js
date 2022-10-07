@@ -61,7 +61,14 @@ const Seach = ({ navigation }) => {
               >
                 1
               </Text>
+
+              <Image
+                style={{ width: 100 }}
+                resizeMode="contain"
+                source={require("../../assets/tuto1.png")}
+              />
             </View>
+
             <View style={{ marginLeft: 300, marginTop: -40 }}>
               <TouchableOpacity>
                 <Ionicons name="play-circle" size={40} color="white" />

@@ -23,14 +23,13 @@
     "firebase": "^9.9.3",
     "react": "18.0.0",
     "react-native": "0.69.5",
+    "react-native-dropdown-picker": "^5.4.2",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-paper": "^5.0.0-rc.6",
     "react-native-reanimated": "~2.9.1",
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
-    "react-native-web": "~0.18.7",
-    "react-dom": "18.0.0",
-    "@expo/webpack-config": "^0.17.0"
+    "expo-checkbox": "~2.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

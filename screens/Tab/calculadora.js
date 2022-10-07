@@ -38,7 +38,7 @@ const Seach = ({ navigation }) => {
         >
           <View style={styles.box}>
             <ImageBackground
-              source={require("../../assets/Supino_I.png")}
+              source={require("../../assets/manterP.png")}
               resizeMode="contain"
               style={{
                 width: "100%",
@@ -71,7 +71,7 @@ const Seach = ({ navigation }) => {
           </View>
           <View style={styles.box}>
             <ImageBackground
-              source={require("../../assets/Treino_b.png")}
+              source={require("../../assets/ganharP.png")}
               resizeMode="contain"
               style={{
                 width: "100%",
@@ -104,7 +104,7 @@ const Seach = ({ navigation }) => {
           </View>
           <View style={styles.box}>
             <ImageBackground
-              source={require("../../assets/Treino_c.png")}
+              source={require("../../assets/emagre.png")}
               resizeMode="contain"
               style={{
                 width: "100%",

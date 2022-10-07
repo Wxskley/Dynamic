@@ -4,10 +4,19 @@ import {
   DrawerContentScrollView,
 } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/core";
-import React, { Component } from "react";
-import { Text, StyleSheet, View, ImageBackground, Image } from "react-native";
+import React, { useState } from "react";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ImageBackground,
+  Image,
+  Modal,
+} from "react-native";
 import * as MailComposer from "expo-mail-composer";
 import { auth } from "../../firebase";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { SimpleModal } from "./SimpleModal";
 function sendEmail(e) {
   e.preventDefault();
   MailComposer.composeAsync({
@@ -17,6 +26,7 @@ function sendEmail(e) {
     isHtml: true,
   });
 }
+
 function CustomDrawer({ ...props }) {
   const navigation = useNavigation();
 
@@ -28,6 +38,7 @@ function CustomDrawer({ ...props }) {
       })
       .catch((error) => alert(error.message));
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.drawerImg}>
@@ -44,8 +55,8 @@ function CustomDrawer({ ...props }) {
       </View>
 
       <DrawerItemList {...props} />
-      <DrawerItem label="Ajuda" onPress={sendEmail} labelStyle={styles.label} />
-      <DrawerItem label="Sair" onPress={handleSignOut} labelStyle={styles.label} />
+      <DrawerItem label="Ajuda" onPress={sendEmail} style={{}} />
+      <DrawerItem label="Sair" onPress={handleSignOut} style={{}} />
     </View>
   );
 }
@@ -54,9 +65,5 @@ export default CustomDrawer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  label:{
-    color:"#000000",
-    
   },
 });
