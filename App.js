@@ -15,7 +15,7 @@ import ForgetPassword from "./screens/ForgetPassword";
 import Execicios from "./screens/Tab/subDivisao/TreinoExe";
 import { ScreenStackHeaderConfig } from "react-native-screens";
 import TreinoExe from "./screens/Tab/subDivisao/TreinoExe";
-
+import TutoPag from "./src/Component/TutoPag";
 const Stack = createNativeStackNavigator();
 const HomeStyle = {
   title: "",
@@ -94,6 +94,19 @@ export default function App() {
           }}
           name="TreinoExe"
           component={TreinoExe}
+        />
+        <Stack.Screen
+          options={{
+            title: "Execicios",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerBackTitleVisible: false,
+
+            headerTintColor: "white",
+          }}
+          name="TutoPag"
+          component={TutoPag}
         />
       </Stack.Navigator>
     </NavigationContainer>

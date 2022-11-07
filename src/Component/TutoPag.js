@@ -21,15 +21,6 @@ const Seach = ({ navigation }) => {
       <View style={styles.container}>
         <Entypo name="menu" size={30} color="white" />
         <Text style>Treinos</Text>
-        <Image
-          source={require("../../assets/Dina.png")}
-          style={{
-            width: 120,
-            height: 60,
-            marginLeft: 140,
-          }}
-          resizeMode="contain"
-        />
       </View>
       <ScrollView>
         <ImageBackground
@@ -70,7 +61,7 @@ const Seach = ({ navigation }) => {
             </View>
 
             <View style={{ marginLeft: 300, marginTop: -40 }}>
-              <TouchableOpacity onPress={() => navigation.navigate("TutoPag")}>
+              <TouchableOpacity>
                 <Ionicons name="play-circle" size={40} color="white" />
               </TouchableOpacity>
             </View>
@@ -102,7 +93,7 @@ const Seach = ({ navigation }) => {
               </Text>
             </View>
             <View style={{ marginTop: -40, marginLeft: 300 }}>
-              <TouchableOpacity onPress={() => navigation.navigate("TutoPag")}>
+              <TouchableOpacity>
                 <Ionicons name="play-circle" size={40} color="white" />
               </TouchableOpacity>
             </View>
@@ -134,7 +125,7 @@ const Seach = ({ navigation }) => {
               </Text>
             </View>
             <View style={{ marginTop: -40, marginLeft: 300 }}>
-              <TouchableOpacity onPress={() => navigation.navigate("TutoPag")}>
+              <TouchableOpacity>
                 <Ionicons name="play-circle" size={40} color="white" />
               </TouchableOpacity>
             </View>
@@ -154,6 +145,7 @@ const Seach = ({ navigation }) => {
                 style={{
                   color: "white",
                   textAlign: "center",
+
                   marginTop: 4,
                   justifyContent: "center",
                   alignItems: "center",
@@ -165,7 +157,7 @@ const Seach = ({ navigation }) => {
               </Text>
             </View>
             <View style={{ marginTop: -40, marginLeft: 300 }}>
-              <TouchableOpacity onPress={() => navigation.navigate("TutoPag")}>
+              <TouchableOpacity>
                 <Ionicons name="play-circle" size={40} color="white" />
               </TouchableOpacity>
             </View>
