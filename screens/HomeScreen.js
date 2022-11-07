@@ -96,7 +96,7 @@ function Draw() {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Calculadoras"
         component={calculadora}
         options={{
@@ -108,7 +108,7 @@ function Draw() {
             <Entypo name="calculator" size={size} color={color} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }

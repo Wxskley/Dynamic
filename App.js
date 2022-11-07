@@ -12,8 +12,9 @@ import TranningC from "./screens/Tab/subDivisao/TranningC";
 import ManterPeso from "./screens/Tab/subCalc/ManterPeso";
 import PagInicial from "./screens/PagInicial";
 import ForgetPassword from "./screens/ForgetPassword";
-import Execicios from "./screens/Tab/Execicios";
+import Execicios from "./screens/Tab/subDivisao/TreinoExe";
 import { ScreenStackHeaderConfig } from "react-native-screens";
+import TreinoExe from "./screens/Tab/subDivisao/TreinoExe";
 
 const Stack = createNativeStackNavigator();
 const HomeStyle = {
@@ -49,7 +50,15 @@ export default function App() {
           component={HomeScreen}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{
+            title: "Treino A",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerBackTitleVisible: false,
+
+            headerTintColor: "white",
+          }}
           name="TranningA"
           component={TranningA}
         />
@@ -72,6 +81,19 @@ export default function App() {
           }}
           name="ManterPeso"
           component={ManterPeso}
+        />
+        <Stack.Screen
+          options={{
+            title: "Execicios",
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
+            headerBackTitleVisible: false,
+
+            headerTintColor: "white",
+          }}
+          name="TreinoExe"
+          component={TreinoExe}
         />
       </Stack.Navigator>
     </NavigationContainer>

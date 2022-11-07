@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
-import Header from "../../../src/Component/Header";
+
 import {
   ScrollView,
   TextInput,
@@ -23,118 +23,115 @@ const TranningA = () => {
   return (
     <KeyboardAvoidingView>
       <View style={styles.container}>
-        <ImageBackground
-          source={require("../../../assets/Mtreino.png")}
-          style={{ width: "100%", flex: 1 }}
-          resizeMode="cover"
-        >
-          <View style={styles.container1}>
-            <TouchableOpacity style={styles.btn12}>
-              <Text style={styles.textButton}>Limpar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btn12}>
-              <Text style={styles.textButton}>Salvar</Text>
-            </TouchableOpacity>
-            <TextInput
-              placeholder="Buscar..."
-              placeholderTextColor="black"
+        <View style={styles.container1}>
+          <TouchableOpacity
+            style={styles.btn12}
+            onPress={() => navigation.navigate("TreinoExe")}
+          >
+            <Text style={styles.textButton}>Novo Execicio</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn12}>
+            <Text style={styles.textButton}>Salvar</Text>
+          </TouchableOpacity>
+          <TextInput
+            placeholder="Buscar..."
+            placeholderTextColor="black"
+            style={{
+              width: 180,
+              height: 35,
+              borderWidth: 1,
+              backgroundColor: "#ffffff",
+              borderRadius: 7,
+              color: "black",
+              justifyContent: "space-between",
+              marginTop: 270,
+              marginLeft: 10,
+            }}
+          />
+          <View style={{ marginTop: 272, marginLeft: -32 }}>
+            <Ionicons name="md-search-circle" size={30} color="black" />
+          </View>
+        </View>
+        <ScrollView>
+          <View style={styles.box}>
+            <View
               style={{
-                width: 180,
+                backgroundColor: "#387ce1",
                 height: 35,
-                borderWidth: 1,
-                backgroundColor: "#ffffff",
-                borderRadius: 7,
-                color: "black",
-                justifyContent: "space-between",
-                marginTop: 270,
-                marginLeft: 10,
+                width: 35,
+                borderRadius: 50,
+                marginTop: 80,
               }}
-            />
-            <View style={{ marginTop: 272, marginLeft: -32 }}>
-              <Ionicons name="md-search-circle" size={30} color="black" />
+            >
+              <Text
+                style={{
+                  color: "white",
+                  textAlign: "center",
+
+                  marginTop: 4,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontWeight: "900",
+                  fontSize: 28,
+                }}
+              >
+                1
+              </Text>
             </View>
           </View>
-          <ScrollView>
-            <View style={styles.box}>
-              <View
+          <View style={styles.box}>
+            <View
+              style={{
+                backgroundColor: "#387ce1",
+                height: 35,
+                width: 35,
+                borderRadius: 50,
+                marginTop: 80,
+              }}
+            >
+              <Text
                 style={{
-                  backgroundColor: "#387ce1",
-                  height: 35,
-                  width: 35,
-                  borderRadius: 50,
-                  marginTop: 80,
+                  color: "white",
+                  textAlign: "center",
+
+                  marginTop: 4,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontWeight: "900",
+                  fontSize: 28,
                 }}
               >
-                <Text
-                  style={{
-                    color: "white",
-                    textAlign: "center",
-
-                    marginTop: 4,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontWeight: "900",
-                    fontSize: 28,
-                  }}
-                >
-                  1
-                </Text>
-              </View>
+                2
+              </Text>
             </View>
-            <View style={styles.box}>
-              <View
+          </View>
+          <View style={styles.box}>
+            <View
+              style={{
+                backgroundColor: "#387ce1",
+                height: 35,
+                width: 35,
+                borderRadius: 50,
+                marginTop: 80,
+              }}
+            >
+              <Text
                 style={{
-                  backgroundColor: "#387ce1",
-                  height: 35,
-                  width: 35,
-                  borderRadius: 50,
-                  marginTop: 80,
+                  color: "white",
+                  textAlign: "center",
+
+                  marginTop: 4,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontWeight: "900",
+                  fontSize: 28,
                 }}
               >
-                <Text
-                  style={{
-                    color: "white",
-                    textAlign: "center",
-
-                    marginTop: 4,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontWeight: "900",
-                    fontSize: 28,
-                  }}
-                >
-                  2
-                </Text>
-              </View>
+                3
+              </Text>
             </View>
-            <View style={styles.box}>
-              <View
-                style={{
-                  backgroundColor: "#387ce1",
-                  height: 35,
-                  width: 35,
-                  borderRadius: 50,
-                  marginTop: 80,
-                }}
-              >
-                <Text
-                  style={{
-                    color: "white",
-                    textAlign: "center",
-
-                    marginTop: 4,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontWeight: "900",
-                    fontSize: 28,
-                  }}
-                >
-                  3
-                </Text>
-              </View>
-            </View>
-          </ScrollView>
-        </ImageBackground>
+          </View>
+        </ScrollView>
       </View>
     </KeyboardAvoidingView>
   );

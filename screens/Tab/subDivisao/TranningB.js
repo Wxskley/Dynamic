@@ -17,7 +17,7 @@ import {
   TouchableOpacity,
 } from "react-native-gesture-handler";
 
-const TranningA = () => {
+const TranningB = () => {
   const navigation = useNavigation();
 
   return (
@@ -29,8 +29,11 @@ const TranningA = () => {
           resizeMode="cover"
         >
           <View style={styles.container1}>
-            <TouchableOpacity style={styles.btn12}>
-              <Text style={styles.textButton}>Limpar</Text>
+            <TouchableOpacity
+              style={styles.btn12}
+              onPress={() => navigation.navigate("TreinoExe")}
+            >
+              <Text style={styles.textButton}>Novo Execicio</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn12}>
               <Text style={styles.textButton}>Salvar</Text>
@@ -140,7 +143,7 @@ const TranningA = () => {
   );
 };
 
-export default TranningA;
+export default TranningB;
 
 const styles = StyleSheet.create({
   container: {
