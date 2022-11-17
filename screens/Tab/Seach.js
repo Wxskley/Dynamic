@@ -16,8 +16,11 @@ const Seach = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Entypo name="menu" size={30} color="white" />
-        <Text style>Treinos</Text>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <Text>
+            <Entypo name="menu" size={35} color="white" />
+          </Text>
+        </TouchableOpacity>
         <Image
           source={require("../../assets/Dina.png")}
           style={{
@@ -27,7 +30,6 @@ const Seach = ({ navigation }) => {
           }}
           resizeMode="contain"
         />
-        <FontAwesome name="filter" size={30} color="white" />
       </View>
       <View></View>
       <ScrollView>

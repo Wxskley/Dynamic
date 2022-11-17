@@ -19,8 +19,12 @@ const Seach = ({ navigation }) => {
     <SafeAreaView>
       <StatusBar />
       <View style={styles.container}>
-        <Entypo name="menu" size={30} color="white" />
-        <Text style>Treinos</Text>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <Text>
+            <Entypo name="menu" size={35} color="white" />
+          </Text>
+        </TouchableOpacity>
+
         <Image
           source={require("../../assets/Dina.png")}
           style={{

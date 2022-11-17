@@ -17,6 +17,7 @@ import * as MailComposer from "expo-mail-composer";
 import { auth } from "../../firebase";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SimpleModal } from "./SimpleModal";
+import { Entypo } from "@expo/vector-icons";
 function sendEmail(e) {
   e.preventDefault();
   MailComposer.composeAsync({
@@ -55,8 +56,18 @@ function CustomDrawer({ ...props }) {
       </View>
 
       <DrawerItemList {...props} />
-      <DrawerItem label="Ajuda" onPress={sendEmail} style={{}} />
-      <DrawerItem label="Sair" onPress={handleSignOut} style={{}} />
+      <DrawerItem
+        onPress={sendEmail}
+        labelStyle={{ fontWeight: "bold", color: "black" }}
+        labelIcon={({ Entypo, color, size }) => (
+          <Icon color={color} size={size} name={Entypo} />
+        )}
+      />
+      <DrawerItem
+        label="Sair"
+        onPress={handleSignOut}
+        labelStyle={{ fontWeight: "bold", color: "black" }}
+      />
     </View>
   );
 }

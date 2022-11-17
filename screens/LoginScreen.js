@@ -11,6 +11,7 @@ import {
   Platform,
   ScrollView,
   ActivityIndicator,
+  Alert,
 } from "react-native";
 import { auth } from "../firebase";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
@@ -19,11 +20,13 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { set } from "react-native-reanimated";
+import { async } from "@firebase/util";
 
 const LoginScreen = ({}) => {
   const [email, setEmail] = useState("dmarcio998@gmail.com");
-  const [password, setPassword] = useState("marcio1234");
+  const [password, setPassword] = useState("93098216");
   const [loading, setLoading] = useState(false);
+  const [loading1, setLoading1] = useState(false);
 
   const navigation = useNavigation();
 
@@ -32,22 +35,32 @@ const LoginScreen = ({}) => {
       .then((value) => {
         return (
           setLoading(true),
-          console.log("Cadastrado com Sucesso!\n + value.user.uid")
+          setTimeout(() => {
+            setLoading(false);
+          }, 1500)
         );
       })
-      .catch((error) => console.log(error));
+
+      .catch((error) => alert("Campos Invalidos"));
   }
   async function handleLogin() {
     await signInWithEmailAndPassword(auth, email, password)
       .then((value) => {
         console.log("Login Sucesso!");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert("Campos Invalidos"));
   }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        return setLoading(true), navigation.replace("Home");
+        return (
+          setLoading(true),
+          setTimeout(() => {
+            setLoading(false);
+            navigation.replace("Home");
+          }, 1500)
+        );
       }
     });
 
@@ -96,39 +109,34 @@ const LoginScreen = ({}) => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn12} onPress={handleLogin}>
-            {!loading ? (
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 20,
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
-              >
-                LOG IN
-                <MaterialIcons name="login" size={24} color="white" />
-              </Text>
-            ) : (
-              <ActivityIndicator size={20} color={"white"} />
-            )}
+            <Text
+              style={{
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              LOG IN
+              <MaterialIcons name="login" size={24} color="white" />
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn12} onPress={handleSignUp}>
-            {!loading ? (
-              <Text
-                style={{
-                  color: "white",
-                  textAlign: "center",
-                  fontSize: 20,
-                  fontWeight: "bold",
-                }}
-              >
-                CREATE ACCOUNT
-                <Ionicons name="create" size={24} color="white" />
-              </Text>
-            ) : (
-              <ActivityIndicator size={20} color={"white"} />
-            )}
+            <Text
+              style={{
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              CREATE ACCOUNT
+              <Ionicons name="create" size={24} color="white" />
+            </Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.animatin}>
+          <ActivityIndicator size="large" color={"white"} animating={loading} />
         </View>
       </ImageBackground>
     </KeyboardAvoidingView>
@@ -182,5 +190,10 @@ const styles = StyleSheet.create({
     width: "80%",
     fontSize: 17,
     color: "white",
+  },
+  animatin: {
+    fontSize: 10000,
+    fontWeight: "900",
+    alignItems: "center",
   },
 });
