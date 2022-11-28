@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
+import { TranningA } from "./TranningA";
 
 import {
   ScrollView,
@@ -20,120 +21,7 @@ import {
 const TreinoExe = () => {
   const navigation = useNavigation();
 
-  return (
-    <KeyboardAvoidingView>
-      <View style={styles.container}>
-        <View
-          style={{
-            alignItems: "center",
-            backgroundColor: "#e4e4e4",
-            height: 40,
-          }}
-        >
-          <TextInput
-            style={{
-              height: 30,
-              width: "98%",
-              backgroundColor: "white",
-              borderRadius: 5,
-              marginTop: 5,
-              alignItems: "center",
-              justifyContent: "center",
-              opacity: 0.2,
-            }}
-            placeholder=" Pesquisar..."
-            placeholderTextColor={"black"}
-          />
-        </View>
-        <ScrollView>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.box}>
-              <View style={styles.iconn}>
-                <AntDesign name="right" size={24} color="white" />
-              </View>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
-      </View>
-    </KeyboardAvoidingView>
-  );
+  return <TranningA />;
 };
 
 export default TreinoExe;

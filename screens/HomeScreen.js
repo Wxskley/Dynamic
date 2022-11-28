@@ -169,7 +169,11 @@ export default function HomeScreen() {
             backgroundColor: "#000000",
           },
           drawerIcon: ({ size, color }) => (
-            <Ionicons name="help" size={size} color={color} />
+            <Ionicons
+              name="information-circle-outline"
+              size={size}
+              color="black"
+            />
           ),
         }}
         component={Ajuda}

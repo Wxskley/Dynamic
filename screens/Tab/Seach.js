@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   ImageBackground,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import React from "react";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
@@ -15,6 +16,7 @@ import { ScrollView } from "react-native-gesture-handler";
 const Seach = ({ navigation }) => {
   return (
     <SafeAreaView>
+      <StatusBar backgroundColor="#61dafb" style="hidden" />
       <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <Text>
@@ -31,8 +33,8 @@ const Seach = ({ navigation }) => {
           resizeMode="contain"
         />
       </View>
-      <View></View>
-      <ScrollView>
+
+      <ScrollView contentContainerStyle={{ paddingBottom: 70 }}>
         <ImageBackground
           source={require("../../assets/Exeback.png")}
           resizeMode="contain"
@@ -153,7 +155,10 @@ const Seach = ({ navigation }) => {
               >
                 Treino D
               </Text>
-              <TouchableOpacity style={styles.btn12}>
+              <TouchableOpacity
+                style={styles.btn12}
+                onPress={() => navigation.navigate("TreinoExe")}
+              >
                 <Text
                   style={{
                     color: "white",

@@ -12,6 +12,8 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
+  TouchableNativeFeedback,
+  Keyboard,
 } from "react-native";
 import { auth } from "../firebase";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
@@ -21,16 +23,22 @@ import {
 } from "firebase/auth";
 import { set } from "react-native-reanimated";
 import { async } from "@firebase/util";
+import { showAlert } from "../src/utils/showAler";
 
 const LoginScreen = ({}) => {
-  const [email, setEmail] = useState("dmarcio998@gmail.com");
-  const [password, setPassword] = useState("93098216");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [loading, setLoading] = useState(false);
   const [loading1, setLoading1] = useState(false);
 
   const navigation = useNavigation();
 
   async function handleSignUp() {
+    if (email === "" || password === "") {
+      Alert.alert("Algo deu errado", "Preencha todos os campos primeiro");
+      setLoading(false);
+      return;
+    }
     await createUserWithEmailAndPassword(auth, email, password)
       .then((value) => {
         return (
@@ -41,14 +49,19 @@ const LoginScreen = ({}) => {
         );
       })
 
-      .catch((error) => alert("Campos Invalidos"));
+      .catch((error) => showAlert(error.code));
   }
   async function handleLogin() {
+    if (email === "" || password === "") {
+      Alert.alert("Algo deu errado", "Preencha todos os campos primeiro");
+      setLoading(false);
+      return;
+    }
     await signInWithEmailAndPassword(auth, email, password)
       .then((value) => {
         console.log("Login Sucesso!");
       })
-      .catch((error) => alert("Campos Invalidos"));
+      .catch((error) => showAlert(error.code));
   }
 
   useEffect(() => {
@@ -67,79 +80,85 @@ const LoginScreen = ({}) => {
     return unsubscribe;
   }, []);
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS == "ios" ? "padding" : "height"}
-      style={styles.background}
-    >
-      <ImageBackground
-        source={require("../assets/Login.png")}
-        style={{ width: "100%", flex: 1 }}
+    <TouchableNativeFeedback onPress={() => Keyboard.dismiss()}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={styles.background}
       >
-        <ScrollView style={{ width: "100%" }} />
+        <ImageBackground
+          source={require("../assets/Login.png")}
+          style={{ width: "100%", flex: 1 }}
+        >
+          <ScrollView style={{ width: "100%" }} />
 
-        <View style={styles.container1}>
-          <TextInput
-            value={email}
-            onChangeText={setEmail}
-            style={styles.input}
-            placeholder="Email"
-            placeholderTextColor={"white"}
-          />
-          <TextInput
-            style={styles.input}
-            value={password}
-            secureTextEntry
-            onChangeText={setPassword}
-            placeholder="Senha"
-            placeholderTextColor={"white"}
-          />
-          <TouchableOpacity
-            style={{ marginLeft: 180, height: 40 }}
-            onPress={() => navigation.replace("ForgetPassword")}
-          >
-            <Text
-              style={{
-                color: "white",
-                fontSize: 13,
-                fontWeight: "bold",
-                textAlign: "right",
-              }}
+          <View style={styles.container1}>
+            <TextInput
+              value={email}
+              onChangeText={setEmail}
+              style={styles.input}
+              placeholder="Email"
+              placeholderTextColor={"white"}
+            />
+            <TextInput
+              style={styles.input}
+              value={password}
+              secureTextEntry
+              onChangeText={setPassword}
+              placeholder="Senha"
+              placeholderTextColor={"white"}
+            />
+            <TouchableOpacity
+              style={{ marginLeft: 180, height: 40 }}
+              onPress={() => navigation.replace("ForgetPassword")}
             >
-              Esqueceu sua senha?
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.btn12} onPress={handleLogin}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: 20,
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              LOG IN
-              <MaterialIcons name="login" size={24} color="white" />
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.btn12} onPress={handleSignUp}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: 20,
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              CREATE ACCOUNT
-              <Ionicons name="create" size={24} color="white" />
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.animatin}>
-          <ActivityIndicator size="large" color={"white"} animating={loading} />
-        </View>
-      </ImageBackground>
-    </KeyboardAvoidingView>
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 13,
+                  fontWeight: "bold",
+                  textAlign: "right",
+                }}
+              >
+                Esqueceu sua senha?
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn12} onPress={handleLogin}>
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                LOG IN
+                <MaterialIcons name="login" size={24} color="white" />
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn12} onPress={handleSignUp}>
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                CREATE ACCOUNT
+                <Ionicons name="create" size={24} color="white" />
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.animatin}>
+            <ActivityIndicator
+              size="large"
+              color={"white"}
+              animating={loading}
+            />
+          </View>
+        </ImageBackground>
+      </KeyboardAvoidingView>
+    </TouchableNativeFeedback>
   );
 };
 

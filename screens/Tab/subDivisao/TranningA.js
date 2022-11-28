@@ -8,170 +8,104 @@ import {
   ImageBackground,
   KeyboardAvoidingView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { Task } from "../../../src/Component/Task";
+import NewTask from "../../../src/Component/NewTask";
 
 import {
   ScrollView,
   TextInput,
   TouchableOpacity,
 } from "react-native-gesture-handler";
+import { AntDesign, Feather } from "@expo/vector-icons";
+import Seach from "../Execicios";
+import { Header } from "../../../src/Component/Header";
+import { Video } from "../../../src/Component/Video";
+import { set } from "react-native-reanimated";
 
-const TranningA = () => {
+export function TranningA() {
   const navigation = useNavigation();
 
+  const [tasks, setTasks] = useState([]);
+  const [finishedTasks, setFinishedTasks] = useState([]);
+  const [newTaskIsVisible, setNewTaskIsVisible] = useState(false);
+
+  function addNewTask(content) {
+    let id = tasks.length === 0 ? 0 : tasks.length + 1 - 1;
+
+    const taskObject = { id: id, content: content };
+    let newTasks = [...tasks, taskObject];
+
+    newTasks.sort((a, b) => {
+      if (a.id > b.id) return -1;
+      else return true;
+    });
+    setTasks(newTasks);
+  }
+
+  function taskCompletd(id) {
+    let filter = tasks.filter((item) => item.id !== id);
+    setTasks(filter);
+
+    const taskFiltered = tasks.filter((item) => item.id === id);
+    let newFinishedTasks = finishedTasks;
+
+    newFinishedTasks.push({
+      id: finishedTasks.length + 1 - 1,
+      content: taskFiltered[0].content,
+      isFinished: true,
+    });
+    newFinishedTasks.sort((a, b) => {
+      if (a.id > b.id) return -1;
+      else return true;
+    });
+    setFinishedTasks(newFinishedTasks);
+  }
   return (
-    <KeyboardAvoidingView>
-      <View style={styles.container}>
-        <View style={styles.container1}>
-          <TouchableOpacity
-            style={styles.btn12}
-            onPress={() => navigation.navigate("TreinoExe")}
-          >
-            <Text style={styles.textButton}>Novo Execicio</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.btn12}>
-            <Text style={styles.textButton}>Salvar</Text>
-          </TouchableOpacity>
-          <TextInput
-            placeholder="Buscar..."
-            placeholderTextColor="black"
-            style={{
-              width: 180,
-              height: 35,
-              borderWidth: 1,
-              backgroundColor: "#ffffff",
-              borderRadius: 7,
-              color: "black",
-              justifyContent: "space-between",
-              marginTop: 270,
-              marginLeft: 10,
-            }}
-          />
-          <View style={{ marginTop: 272, marginLeft: -32 }}>
-            <Ionicons name="md-search-circle" size={30} color="black" />
-          </View>
-        </View>
-        <ScrollView>
-          <View style={styles.box}>
-            <View
-              style={{
-                backgroundColor: "#387ce1",
-                height: 35,
-                width: 35,
-                borderRadius: 50,
-                marginTop: 80,
-              }}
-            >
-              <Text
-                style={{
-                  color: "white",
-                  textAlign: "center",
-
-                  marginTop: 4,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  fontWeight: "900",
-                  fontSize: 28,
-                }}
-              >
-                1
-              </Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View
-              style={{
-                backgroundColor: "#387ce1",
-                height: 35,
-                width: 35,
-                borderRadius: 50,
-                marginTop: 80,
-              }}
-            >
-              <Text
-                style={{
-                  color: "white",
-                  textAlign: "center",
-
-                  marginTop: 4,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  fontWeight: "900",
-                  fontSize: 28,
-                }}
-              >
-                2
-              </Text>
-            </View>
-          </View>
-          <View style={styles.box}>
-            <View
-              style={{
-                backgroundColor: "#387ce1",
-                height: 35,
-                width: 35,
-                borderRadius: 50,
-                marginTop: 80,
-              }}
-            >
-              <Text
-                style={{
-                  color: "white",
-                  textAlign: "center",
-
-                  marginTop: 4,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  fontWeight: "900",
-                  fontSize: 28,
-                }}
-              >
-                3
-              </Text>
-            </View>
-          </View>
-        </ScrollView>
-      </View>
-    </KeyboardAvoidingView>
+    <View>
+      <Header
+        newTaskIsVisible={newTaskIsVisible}
+        setNewTaskIsVisible={setNewTaskIsVisible}
+      />
+      {newTaskIsVisible && <NewTask addNewTask={addNewTask} />}
+      <ScrollView contentContainerStyle={{ paddingBottom: 210 }}>
+        {tasks.map((item) => (
+          <Task key={item.id} data={item} action={(id) => taskCompletd(id)} />
+        ))}
+        {finishedTasks.length === 0 && (
+          <>
+            <View></View>
+            {finishedTasks.map((item) => (
+              <Task
+                key={item.id}
+                data={item}
+                action={() => alert("Execicio deletado")}
+              />
+            ))}
+          </>
+        )}
+      </ScrollView>
+    </View>
   );
-};
-
-export default TranningA;
+}
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "black",
+    backgroundColor: "white",
     height: "100%",
     fontSize: 12,
   },
+
   container1: {
+    backgroundColor: "#000000",
+    width: "100%",
+    height: 80,
+    alignItems: "center",
+    justifyContent: "space-between",
     flexDirection: "row",
   },
-  btn12: {
-    width: 80,
-    marginLeft: 10,
-    backgroundColor: "#FFA500",
-    marginBottom: 12,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    shadowColor: "#000000",
-    marginTop: 270,
-    height: 35,
-  },
-  box: {
-    padding: 10,
-    margin: 8,
-    backgroundColor: "#33373a",
-    borderRadius: 15,
-    height: 200,
-  },
-  textButton: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 17,
+  btn: {
+    marginRight: 10,
   },
 });

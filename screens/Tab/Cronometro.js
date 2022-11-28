@@ -46,6 +46,7 @@ export default function Cronometro() {
   };
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor="#61dafb" style="light" />
       <ImageBackground
         source={require("../../assets/cro.png")}
         resizeMode="contain"

@@ -1,39 +1,57 @@
 import { useNavigation } from "@react-navigation/core";
-import { StyleSheet, Text, View, Image, SafeAreaView } from "react-native";
 import React from "react";
-import { Entypo, FontAwesome } from "@expo/vector-icons";
-const Header = () => {
+import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
+import { Feather, AntDesign } from "@expo/vector-icons";
+import Seach from "../../screens/Tab/Execicios";
+
+export function Header({ newTaskIsVisible, setNewTaskIsVisible }) {
   const navigation = useNavigation();
-
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Entypo name="menu" size={30} color="white" />
-        <Text style>Treinos</Text>
-        <Image
-          source={require("../../assets/Dina.png")}
-          style={{
-            width: 120,
-            height: 60,
-            marginLeft: 140,
-          }}
-          resizeMode="contain"
-        />
-        <FontAwesome name="filter" size={30} color="white" />
+    <View style={styles.container1}>
+      <TouchableOpacity
+        onPress={() => navigation.goBack(Seach)}
+        style={{ marginTop: 20, marginLeft: 10 }}
+      >
+        <AntDesign name="left" size={24} color="white" />
+      </TouchableOpacity>
+      <Text
+        style={{
+          color: "white",
+          marginTop: 20,
+          fontSize: 23,
+          fontWeight: "bold",
+        }}
+      >
+        Treinar
+      </Text>
+
+      <View style={styles.containerRight}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => setNewTaskIsVisible(!newTaskIsVisible)}
+        >
+          <Text style={{ fontWeight: "bold", marginTop: 20 }}>
+            <Feather
+              name={newTaskIsVisible ? "x" : "plus"}
+              size={30}
+              color="white"
+            />
+          </Text>
+        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
-};
-
-export default Header;
-
+}
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     backgroundColor: "#000000",
-    flexDirection: "row",
+    width: "100%",
+    height: 80,
     alignItems: "center",
     justifyContent: "space-between",
-    paddingRight: 10,
-    paddingLeft: 10,
+    flexDirection: "row",
+  },
+  btn: {
+    marginRight: 10,
   },
 });

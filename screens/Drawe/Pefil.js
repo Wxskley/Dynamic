@@ -8,10 +8,12 @@ import {
   ImageBackground,
   KeyboardAvoidingView,
   TouchableOpacity,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../src/Component/Header";
 import { TextInput } from "react-native-gesture-handler";
+import * as ImagePicker from "expo-image-picker";
 import {
   Entypo,
   Feather,
@@ -21,90 +23,54 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-const Perfil = () => {
+
+export default function Perfil() {
   const navigation = useNavigation();
+  const [image, setImage] = useState(null);
+  const [nome, setNome] = useState(" Marcio");
+  const [sobrenome, setSobrenome] = useState(" Douglas");
+  const [email, setEmail] = useState(" dmarcio998@gmail.com");
+  const [peso, setPeso] = useState(" 65");
+  const [altura, setAltura] = useState(" 1.65");
+  const pickImage = async () => {
+    Alert.alert("Editar Perfil", "Salvo com Sucesso");
+  };
 
   return (
-    <SafeAreaView>
-      <View style={styles.drawerImg}>
-        <Image
-          source={require("../../assets/pefi.png")}
-          resizeMode="contain"
-          style={{
-            width: 80,
-            padding: 70,
-            flex: 1,
-            marginTop: 25,
-            marginLeft: "30%",
-          }}
-        />
-        <MaterialIcons name="photo-camera" size={24} color="white" />
-      </View>
-      <KeyboardAvoidingView
-        style={{ flexDirection: "row", alignItems: "center" }}
-      >
-        <View style={styles.subcontainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Nome"
-            placeholderTextColor={"#000000"}
-          />
-          <FontAwesome5 name="user" size={24} color="black" />
-        </View>
+    <View style={styles.container}>
+      <TextInput
+        placeholder=" Nome"
+        placeholderTextColor="#a8a8a8"
+        style={styles.input}
+        value={nome}
+      />
+      <TextInput
+        placeholder=" Sobrenome"
+        placeholderTextColor="#a8a8a8"
+        style={styles.input}
+        value={sobrenome}
+      />
 
-        <View style={{ marginLeft: -73 }}>
-          <View style={styles.subcontainer}>
-            <TextInput
-              style={styles.input}
-              placeholder="Sobrenome"
-              placeholderTextColor={"#000000"}
-            />
-            <FontAwesome5 name="user" size={24} color="black" />
-          </View>
-        </View>
-      </KeyboardAvoidingView>
-      <KeyboardAvoidingView>
-        <View style={styles.subcontainer}>
-          <TextInput
-            style={{ borderBottomWidth: 1, width: "91%" }}
-            placeholder="Email"
-            placeholderTextColor={"#000000"}
-          />
-          <MaterialCommunityIcons
-            name="email-outline"
-            size={24}
-            color="black"
-          />
-        </View>
-      </KeyboardAvoidingView>
-      <KeyboardAvoidingView
-        style={{ flexDirection: "row", alignItems: "center" }}
-      >
-        <View style={styles.subcontainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Idade"
-            placeholderTextColor={"#000000"}
-          />
-          <Entypo name="creative-commons-attribution" size={24} color="black" />
-        </View>
+      <TextInput
+        placeholder=" Email"
+        placeholderTextColor="#a8a8a8"
+        value={email}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder=" Peso"
+        placeholderTextColor="#a8a8a8"
+        style={styles.input}
+        value={peso}
+      />
+      <TextInput
+        placeholder=" Altura"
+        placeholderTextColor="#a8a8a8"
+        style={styles.input}
+        value={altura}
+      />
 
-        <View style={{ marginLeft: -73 }}>
-          <View style={styles.subcontainer}>
-            <TextInput
-              style={styles.input}
-              placeholder="Peso"
-              placeholderTextColor={"#000000"}
-            />
-            <MaterialCommunityIcons
-              name="weight-kilogram"
-              size={24}
-              color="black"
-            />
-          </View>
-        </View>
-      </KeyboardAvoidingView>
-      <TouchableOpacity style={styles.btn12}>
+      <TouchableOpacity style={styles.btn12} onPress={pickImage}>
         <Text
           style={{
             color: "white",
@@ -116,41 +82,36 @@ const Perfil = () => {
           SALVAR
         </Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
-};
-
-export default Perfil;
+}
 
 const styles = StyleSheet.create({
-  drawerImg: {
-    backgroundColor: "#000000",
-    height: 210,
-  },
   container: {
-    flexDirection: "row",
-    justifyContent: "",
+    justifyContent: "center",
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "black",
   },
-  subcontainer: {
-    padding: 20,
-    flexDirection: "row-reverse",
-    justifyContent: "flex-end",
-  },
+
   input: {
-    borderBottomWidth: 1,
-    width: "55%",
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "white",
+    width: "80%",
+    margin: 10,
+    height: 40,
+    fontSize: 17,
+    color: "white",
   },
   btn12: {
-    width: "50%",
-    marginLeft: 90,
+    width: "80%",
+
     backgroundColor: "#FFA500",
-    borderRadius: 10,
+    borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    shadowColor: "#000000",
-    marginTop: 20,
-    height: 30,
+    marginTop: 30,
+    height: 35,
   },
 });
